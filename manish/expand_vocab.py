@@ -175,7 +175,8 @@ def task_4(word, th_k=0.7, th_l=0.4):
     N = None
     
     print('A')
-    for idx, nn in tqdm(enumerate(list(nouns)[:N], start=1), total=N):
+    tempn = len(list(nouns)[:N])
+    for idx, nn in tqdm(enumerate(list(nouns)[:N], start=1), total=tempn):
         # thesaurus net
         aux = get_syn_thesaurus_net(nn, is_task_4=True)
 
@@ -190,7 +191,8 @@ def task_4(word, th_k=0.7, th_l=0.4):
 
         column_f['n'].add(nn)
     print('B')
-    for idx, vb in tqdm(enumerate(list(verbs)[:N], start=1), total=N):
+    tempn = len(list(nouns)[:N])
+    for idx, vb in tqdm(enumerate(list(verbs)[:N], start=1), total=tempn):
         # thesaurus net
         aux = get_syn_thesaurus_net(vb, is_task_4=True)
         for pos, elems in aux.items():
@@ -201,7 +203,8 @@ def task_4(word, th_k=0.7, th_l=0.4):
             column_f[pos] = column_f[pos].union(elems)
         column_f['v'].add(vb)
     print('C')
-    for idx, ad in tqdm(enumerate(list(adjs)[:N], start=1), total=N):
+    tempn = len(list(nouns)[:N])
+    for idx, ad in tqdm(enumerate(list(adjs)[:N], start=1), total=tempn):
         # thesaurus net
         aux = get_syn_thesaurus_net(ad, is_task_4=True)
         for pos, elems in aux.items():
@@ -212,7 +215,8 @@ def task_4(word, th_k=0.7, th_l=0.4):
             column_f[pos] = column_f[pos].union(elems)
         column_f['a'].add(ad)
     print('D')
-    for idx, ad in tqdm(enumerate(list(advs)[:N], start=1), total=N):
+    tempn = len(list(nouns)[:N])
+    for idx, ad in tqdm(enumerate(list(advs)[:N], start=1), total=tempn):
         # thesaurus net
         aux = get_syn_thesaurus_net(ad, is_task_4=True)
         for pos, elems in aux.items():
