@@ -367,10 +367,13 @@ def get_related(w):
 def get_common_words(main_word, related_words, models, threshold, pos_tags_={'a', 'v', 'n', 'r'}):
 
     def sort_sim(pivot_word, words, model):
-        res = []
-        for w_ in words:
-            res.append((w_, model.distance(pivot_word, w_)))
-        res = sorted(res, key=lambda x: x[1])
+        try:
+            res = []
+            for w_ in words:
+                res.append((w_, model.distance(pivot_word, w_)))
+            res = sorted(res, key=lambda x: x[1])
+        except Exception as e:
+            print(str(e))
         return [e[0] for e in res]
 
     def get_intersect(sorted_results, th):
